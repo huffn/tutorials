@@ -20,7 +20,7 @@
         margin: 0;
       }
     </style>
-    <core-ajax auto url="http://api.randomuser.me/" handleAs="json" response="{{data}}"></core-ajax>
+    <core-ajax auto url="/randomUser" handleAs="json" response="{{data}}"></core-ajax>
     <template repeat="{{person in data.results}}">
       <img id="picture" src="{{person.user.picture.medium}}" alt="{{person.user.username}}'s profile picture"/>
       <h1>{{person.user.name.first}} {{person.user.name.last}}</h1>
