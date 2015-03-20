@@ -1,0 +1,33 @@
+<link rel="import" href="/lib/polymer/polymer.html"/>
+<link rel="import" href="/lib/core-ajax/core-ajax.html"/>
+
+<polymer-element name="huff-profile">
+  <template>
+    <style>
+      :host {
+        text-align: center;
+      }
+      img {
+        border-radius: 50%;
+        margin: 5px auto;
+        display: block;
+      }
+      h1 {
+        text-transform: capitalize;
+        margin: 0;
+      }
+      h2 {
+        margin: 0;
+      }
+    </style>
+    <core-ajax auto url="http://api.randomuser.me/" handleAs="json" response="{{data}}"></core-ajax>
+    <template repeat="{{person in data.results}}">
+      <img id="picture" src="{{person.user.picture.medium}}" alt="{{person.user.username}}'s profile picture"/>
+      <h1>{{person.user.name.first}} {{person.user.name.last}}</h1>
+      <h2 id="username">~{{person.user.username}}</h2>
+    </template>
+  </template>
+  <script>
+    Polymer({});
+  </script>
+</polymer-element>

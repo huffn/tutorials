@@ -1,0 +1,44 @@
+extends ../layouts/layout
+
+block head
+  title #{application} &middot; Polymer
+  script(src="/lib/webcomponentsjs/webcomponents.js")
+
+  link(rel="import", href="/lib/prettify-element/prettify-element.html")
+  link(rel="import", href="/lib/google-map/google-map.html")
+
+block styles
+  link(rel='stylesheet', href='/css/polymer.min.css')
+
+block content
+
+  .mini-tron
+    .container
+      h1 Polymer Introduction
+
+  .container
+    .row
+      .col-sm-12
+        h2 What is Polymer?
+        p Polymer consists of a polyfill to give non-compliant browsers access to the Web Component spec.
+        | Polymer also provides some syntactic sugar for data-binding and when creating templates.
+
+    .row
+      .col-sm-12
+        h2 How does it work?
+        p On the page that you want to include web components, you'll need to add the following line to ensure compatability:
+        prettify-element &lt;script src="path/to/webcomponentsjs/webcomponents.min.js"></script>
+        p Now you can import any web components that you want to use:
+        prettify-element &lt;link rel="import" href="path/to/google-map/google-map.html">
+        p And then you can use it on your page:
+        prettify-element &lt;google-map latitude="40.323" longitude="-111.682"></google-map>
+        p Now Polymer can recognize your custom tag and it will look like this on your page (I added a marker as well to point out an important building):
+        google-map(latitude="40.323502", longitude="-111.682517", zoom="17" zoomable="false", draggable="false", disableDefaultUI="true")
+          google-map-marker(latitude="40.323502", longitude="-111.682517", title="Building S")
+
+  br
+  br
+
+block scripts
+  //script.
+

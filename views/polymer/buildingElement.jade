@@ -1,0 +1,75 @@
+extends ../layouts/layout
+
+block head
+  title #{application} &middot; Building an Element
+  script(src="/lib/webcomponentsjs/webcomponents.js")
+
+  link(rel="import", href="/lib/prettify-element/prettify-element.html")
+  link(rel="import", href="/lib/github-gist/github-gist.html")
+  link(rel="import", href="/elements/huff-profile.html")
+  link(rel="import", href="/elements/huff-profile.html")
+
+block styles
+  link(rel='stylesheet', href='/css/polymer.min.css')
+
+block content
+
+  .mini-tron
+    .container
+      h1 Building an Element
+
+  .container
+    .row
+      .col-sm-12
+
+        h2 Overview
+        p There is a dearth of random profile web components available.  Let's fill this void in the Internet and contribute something meaningful to the world.
+
+    .row
+      .col-sm-12
+        h2 Getting Started
+        p First we need to create a new html file that contains the following:
+        prettify-element &lt;link rel="import" href="/path/to/polymer/polymer.html"/>
+        p This loads the Polymer api that gives us the syntactic sugar that makes making web components simple.
+        p Now we can add the initial boilerplate code that makes a web component:
+        prettify-element(text="&lt;polymer-element name='cool-component-name'>" +
+        "\n  &lt;template>" +
+        "\n    &lt;style>" +
+        "\n    &lt;/style>" +
+        "\n  &lt;/template>" +
+        "\n  &lt;script>" +
+        "\n    Polymer({})" +
+        "\n  &lt;/script>" +
+        "\n&lt;/polymer-element>")
+        p On our page that we want the random profile to be on, we need to make sure to add a link to our new component:
+        prettify-element &lt;link rel="import" href="/path/to/cool-component-name.html"/>
+        p And if we refresh our page we should see nothing. We should add some content so it is easier to tell if our component is working.
+
+    .row
+      .col-sm-12
+        h2 Getting Data
+        p I found an awesome API at&nbsp;
+          a(href="https://randomuser.me/", title="https://randomuser.me/") https://randomuser.me/
+          |  that will generate all sorts of random personal information.
+        p We make a request using an ajax call and it returns a random person for us.
+        p Polymer has a core component called core-ajax that makes it easy to make ajax calls. We can include it into our component right next to where we imported polymer.html:
+        prettify-element &lt;link rel="import" href="/path/to/core-ajax/core-ajax.html"/>
+        p Now we can add this custom component inside our random profile.  If we add the following into the template tag of our component:
+        prettify-element &lt;core-ajax auto url='http://api.randomuser.me' handleAs='json' response='&#123;&#123;data&#125;&#125;'>&lt;/core-ajax>
+        p This makes an ajax call to the url specified and saves the response into a variable named data that the template can use.
+        p Right after the core-ajax line we just inserted, we can add the following code to display the first and last name of our user once the ajax call is finished:
+        prettify-element(text="&lt;template repeat='&#123;&#123;person in data.results&#125;&#125;'>" +
+        "\n  &lt;h1>&#123;&#123;person.user.name.first&#125;&#125; &#123;&#123;person.user.name.last&#125;&#125;&lt;/h1>" +
+        "\n&lt;/template>")
+        p I used one of Polymer's features by using the repeat attribute on a template tag. It is the equivilant to ng-repeat. I decided to use it because my profile will eventually include an image, and I didn't want the src of that image to be undefined before the ajax call returned.
+        p I fleshed out my profile component a little more with some css and used some additional data from the api. This is my code:
+        github-gist(gistid="c8d25ad9f277a66e79df")
+
+    .row
+      .col-sm-12
+        h2 Finished Result
+        huff-profile
+  br
+  br
+
+block scripts

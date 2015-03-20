@@ -1,0 +1,19 @@
+<link rel="import" href="/lib/polymer/polymer.html"/>
+<link rel="import" href="/elements/huff-chat.html"/>
+<link rel="import" href="/lib/core-ajax/core-ajax.html"/>
+<link rel="import" href="/lib/firebase-element/firebase-element.html"/>
+
+<polymer-element name="huff-chat-list">
+  <template>
+    <style>
+
+    </style>
+    <firebase-element id="base" location="https://familysearchsecrets.firebaseio.com/posts/" data="{{data}}" keys="{{keys}}"></firebase-element>
+    <template repeat="{{person, index in data}}">
+      <huff-chat person="{{person}}" index="{{index}}"></huff-chat>
+    </template>
+  </template>
+  <script>
+    Polymer({});
+  </script>
+</polymer-element>

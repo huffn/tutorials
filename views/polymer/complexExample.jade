@@ -1,0 +1,72 @@
+extends ../layouts/layout
+block head
+  title #{application} &middot; Polymer
+  script(src="/lib/webcomponentsjs/webcomponents.js")
+
+  link(rel="import", href="/lib/github-gist/github-gist.html")
+  link(rel="import", href="/lib/core-scaffold/core-scaffold.html")
+  link(rel="import", href="/lib/core-item/core-item.html")
+  link(rel="import", href="/lib/paper-input/paper-input.html")
+  link(rel="import", href="/lib/paper-fab/paper-fab.html")
+  link(rel="import", href="/elements/huff-profile.html")
+  link(rel="import", href="/elements/huff-chat-list.html")
+
+block styles
+  link(rel='stylesheet', href='/css/polymer.min.css')
+
+block content
+  .mini-tron
+    .container
+      h1 Complex Example
+  .container
+    .row
+      .col-sm-12
+        h2 FamilySearch Secrets
+        p By combining several core components from Polymer and three custom components that I wrote, I made a simple mockup of an app that should never exist.
+
+    .row
+      .col-sm-12
+        h2 The Code
+        github-gist(gistid="27d5869d1881d0b0c369")
+
+    .row
+      .col-sm-12
+        h2 The Result
+        .polymer-container
+          template(is="auto-binding")
+            core-scaffold
+              core-header-panel(navigation, flex, mode="seamed")
+                core-toolbar Profile
+                core-menu
+                  huff-profile(id="profile")
+              div(tool, layout, horizontal, flex)
+                span(flex) FamilySearch Secrets
+                core-icon(icon="account-circle")
+                span 5
+              huff-chat-list(id="chatList")
+              div(flex)
+                .send-message(layout, horizontal)
+                  paper-input(flex, label="Type message...", id="input", value="{{input}}")
+                  paper-fab(icon="send", id="sendButton", on-tap="{{sendMyMessage}}")
+  br
+  br
+
+block scripts
+  script.
+    var template = document.querySelector('template[is=auto-binding]');
+    template.sendMyMessage = function(evt, detail, sender) {
+      var text = template.$.input;
+      if(!text.value){
+        return false;
+      }
+      var prof = template.$.profile;
+      var picture = prof.data.results[0].user.picture.thumbnail;
+      var username = prof.data.results[0].user.username;
+
+      template.$.chatList.$.base.push({
+        message: text.value,
+        thumbnail: picture,
+        username: username
+      });
+      text.value = null;
+    }

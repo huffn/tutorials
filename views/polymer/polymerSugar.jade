@@ -1,0 +1,68 @@
+extends ../layouts/layout
+block head
+  title #{application} &middot; Polymer
+  script(src="/lib/webcomponentsjs/webcomponents.js")
+
+  link(rel="import", href="/lib/prettify-element/prettify-element.html")
+
+block styles
+  link(rel='stylesheet', href='/css/polymer.min.css')
+
+block content
+  .mini-tron
+    .container
+      h1 Polymer Sugar
+  .container
+    .row
+      .col-sm-12
+        h2 What else can Polymer do?
+        p The&nbsp;
+          a(href="https://www.polymer-project.org/0.5/docs/polymer/polymer.html") Polymer API developer guide
+          |  lists a plethora of additional features that you can take advantage of when building web components.
+    .row
+      .col-sm-12
+        h2 Bindings
+
+        h3 Template Instances
+        p If you need to pass in a specific scope for a template
+        prettify-element &lt;template bind="{{person}}"> ... &lt;/template>
+        p If person had a name attribute you can now access it using:
+        prettify-element {{name}}
+
+        h3 Named Instances
+        p If you need to namespace your scope
+        prettify-element &lt;template bind="{{person as person}}"> ... &lt;/template>
+        p Now you would be able to access your name attibute like this:
+        prettify-element {{person.name}}
+
+        h3 Nested Templates
+        p You can use as many templates nested inside each other that you need to organize your code. Nested scopes will only have access to the parent scope if the parent scope is namespaced.
+
+        h3 Repeating a Template
+        p You can have a template repeat itself much like ng-repeat
+        prettify-element &lt;template repeat="{{array}}"> ... &lt;/template>
+        p You can also namespace your array attributes
+        prettify-element &lt;template repeat="{{item in array}}"> ... &lt;/template>
+        p Now if the array contained a group of objects that had a name attribute you could access it inside the template like this:
+        prettify-element {{item.name}}
+        p If you need the index of the array, you can set your repeat up like this:
+        prettify-element &lt;template repeat="{{item, itemIndex in array}}"> ... &lt;/template>
+
+        h3 Conditionals
+        p Conditional portions of your template can take advantage of the if attribute
+        prettify-element &lt;template if="{{conditionalValue}}"> ... &lt;/template>
+
+        h3 Filters
+        p Just like angular, you can pass your scoped variables through a filter to modify their values
+        prettify-element {{person.name | toUpperCase }}
+        p This filter doesn't exist, but we can make it so
+        prettify-element(text="Polymer({" +
+        "\n  toUpperCase: function(value) {" +
+        "\n    return value.toUpperCase();" +
+        "\n  }" +
+        "\n})")
+  br
+  br
+
+block scripts
+  //script.

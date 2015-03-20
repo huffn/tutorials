@@ -1,0 +1,36 @@
+nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
+  .container
+    .navbar-header
+      button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+        //- if you want you may use the font awesome icon instead
+        //- i.fa.fa-lg.fa-bars
+      a.navbar-brand(href='/') #{application}
+
+    .collapse.navbar-collapse
+      ul.nav.navbar-nav
+        li.dropdown(class={active: section=='polymer'})
+          a.dropdown-toggle(href='#', data-toggle='dropdown')
+            i.fa.fa-fw.fa-laptop
+            | &nbsp;Polymer Tutorial&nbsp;
+            b.caret
+          ul.dropdown-menu
+            li
+              a(href='/polymer')
+                i.fa.fa-fw.fa-cubes
+                | &nbsp;Polymer
+            li
+              a(href='/polymer/buildingElement')
+                i.fa.fa-fw.fa-university
+                | &nbsp;Building an Element
+            li
+              a(href='/polymer/complexExample')
+                i.fa.fa-fw.fa-pencil-square-o
+                | &nbsp;Complex Example
+            li
+              a(href='/polymer/polymerSugar')
+                i.fa.fa-fw.fa-heart
+                  | &nbsp;Polymer Sugar

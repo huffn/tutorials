@@ -1,0 +1,32 @@
+{
+  "name": "Skeleton",
+  "dependencies": {
+    "animate.css": "~3.1.1",
+    "bootstrap": "~3.3.2",
+    "bootstrap-social": "~4.8.0",
+    "card": "~0.1.4",
+    "fastclick": "~1.0.6",
+    "font-awesome": "~4.2.0",
+    "jquery.complexify.js": "*",
+    "mailcheck": "~1.0.4",
+    "moment": "~2.8.4",
+    "odometer": "~0.4.7",
+    "devicons": "~1.6.0",
+    "react": "~0.12.2",
+    "polymer": "Polymer/polymer#~0.5.5",
+
+    "core-scaffold": "Polymer/core-scaffold#^0.5.5",
+    "core-item": "Polymer/core-item#^0.5.5",
+    "paper-input": "Polymer/paper-input#^0.5.5",
+    "paper-fab": "Polymer/paper-fab#^0.5.5",
+    "core-ajax": "Polymer/core-ajax#^0.5.0",
+    "prettify-element": "Polymer/prettify-element",
+    "google-map": "GoogleWebComponents/google-map",
+    "github-gist": "dmaslov/github-gist",
+
+    "firebase-element": "Polymer/firebase-element"
+  },
+  "resolutions": {
+    "devicons": "~1.6.0"
+  }
+}
