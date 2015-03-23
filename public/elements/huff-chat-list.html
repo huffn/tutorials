@@ -14,6 +14,10 @@
     </template>
   </template>
   <script>
-    Polymer({});
+    Polymer({
+      dataChanged: function(evt, detail, sender){
+          template.$.postCount.innerHTML = template.$.chatList.data.length;
+      }
+    });
   </script>
 </polymer-element>

@@ -207,91 +207,92 @@ app.use(helmet.frameguard('deny'));   // Prevent iframe clickjacking
 //   IT'S JUST PAINFUL OTHERWISE! OR DON'T
 //   EVEN USE IT AT ALL - I JUST WANTED TO
 //   LEARN HOW IT WORKS. :)
-
-app.use(helmet.contentSecurityPolicy({
-  defaultSrc: [
-    "'self'",
-    'skeleton-app.jit.su'
-  ],
-  scriptSrc: [
-    "'self'",
-    "'unsafe-eval'",
-    "'unsafe-inline'",
-    'http://ajax.googleapis.com',
-    'https://*.googleapis.com',
-    'https://maps.gstatic.com',
-    'http://www.google-analytics.com',
-    'https://www.google-analytics.com',
-    'http://oss.maxcdn.com',
-    'https://oss.maxcdn.com',
-    'http://cdnjs.cloudflare.com',
-    'https://cdnjs.cloudflare.com',
-    'https://gist.github.com',
-    'https://*.firebaseio.com'
-  ],
-  styleSrc: [
-    "'self'",
-    "'unsafe-inline'",
-    'http://fonts.googleapis.com',
-    'https://fonts.googleapis.com',
-    'https://gist-assets.github.com'
-  ],
-  fontSrc: [
-    "'self'",
-    'http://fonts.googleapis.com',
-    'https://fonts.googleapis.com',
-    'http://fonts.gstatic.com',
-    'https://fonts.gstatic.com',
-    'htp://themes.googleusercontent.com',
-    'https://themes.googleusercontent.com'
-  ],
-  imgSrc: [
-    "'self'",
-    'data:',
-    'https://gravatar.com',
-    'https://avatars.githubusercontent.com',
-    'http://github.global.ssl.fastly.net',
-    'https://github.global.ssl.fastly.net',
-    'http://chart.googleapis.com',
-    'https://chart.googleapis.com',
-    'http://www.google-analytics.com',
-    'https://www.google-analytics.com',
-    'http://api.randomuser.me',
-    'https://*.gstatic.com',
-    'https://*.googleapis.com'
-  ],
-  mediaSrc: [
-    "'self'"
-  ],
-  connectSrc: [ // limit the origins (via XHR, WebSockets, and EventSource)
-    "'self'",
-    'ws://localhost:5000',
-    'ws://localhost:3000',
-    'ws://127.0.0.1:35729/livereload',
-    'wss://skeleton-app.jit.su',
-    'wss://*.firebaseio.com',
-    'https://api.github.com',
-    'http://api.randomuser.me',
-    'https://maps.googleapis.com',
-    'http://ajax.googleapis.com'
-  ],
-  objectSrc: [  // allows control over Flash and other plugins
-    "'none'"
-  ],
-  frameSrc: [   // origins that can be embedded as frames
-    'https://*.firebaseio.com'
-  ],
-  sandbox: [
-    'allow-same-origin',
-    'allow-forms',
-    'allow-scripts'
-  ],
-  reportUri: '/report-violation',
-  reportOnly: false,     // set to true if you *only* want to report errors
-  setAllHeaders: false,  // set to true if you want to set all headers
-  disableAndroid: false, // set to true if you want to disable Android (browsers can vary and be buggy)
-  safari5: false         // set to true if you want to force buggy CSP in Safari 5
-}));
+//
+//app.use(helmet.contentSecurityPolicy({
+//  defaultSrc: [
+//    "'self'",
+//    'skeleton-app.jit.su'
+//  ],
+//  scriptSrc: [
+//    "'self'",
+//    "'unsafe-eval'",
+//    "'unsafe-inline'",
+//    "data:text/javascript",
+//    'http://ajax.googleapis.com',
+//    'https://*.googleapis.com',
+//    'https://maps.gstatic.com',
+//    'http://www.google-analytics.com',
+//    'https://www.google-analytics.com',
+//    'http://oss.maxcdn.com',
+//    'https://oss.maxcdn.com',
+//    'http://cdnjs.cloudflare.com',
+//    'https://cdnjs.cloudflare.com',
+//    'https://gist.github.com',
+//    'https://*.firebaseio.com'
+//  ],
+//  styleSrc: [
+//    "'self'",
+//    "'unsafe-inline'",
+//    'http://fonts.googleapis.com',
+//    'https://fonts.googleapis.com',
+//    'https://gist-assets.github.com'
+//  ],
+//  fontSrc: [
+//    "'self'",
+//    'http://fonts.googleapis.com',
+//    'https://fonts.googleapis.com',
+//    'http://fonts.gstatic.com',
+//    'https://fonts.gstatic.com',
+//    'htp://themes.googleusercontent.com',
+//    'https://themes.googleusercontent.com'
+//  ],
+//  imgSrc: [
+//    "'self'",
+//    'data:',
+//    'https://gravatar.com',
+//    'https://avatars.githubusercontent.com',
+//    'http://github.global.ssl.fastly.net',
+//    'https://github.global.ssl.fastly.net',
+//    'http://chart.googleapis.com',
+//    'https://chart.googleapis.com',
+//    'http://www.google-analytics.com',
+//    'https://www.google-analytics.com',
+//    'http://api.randomuser.me',
+//    'https://*.gstatic.com',
+//    'https://*.googleapis.com'
+//  ],
+//  mediaSrc: [
+//    "'self'"
+//  ],
+//  connectSrc: [ // limit the origins (via XHR, WebSockets, and EventSource)
+//    "'self'",
+//    'ws://localhost:5000',
+//    'ws://localhost:3000',
+//    'ws://127.0.0.1:35729/livereload',
+//    'wss://skeleton-app.jit.su',
+//    'wss://*.firebaseio.com',
+//    'https://api.github.com',
+//    'http://api.randomuser.me',
+//    'https://maps.googleapis.com',
+//    'http://ajax.googleapis.com'
+//  ],
+//  objectSrc: [  // allows control over Flash and other plugins
+//    "'none'"
+//  ],
+//  frameSrc: [   // origins that can be embedded as frames
+//    'https://*.firebaseio.com'
+//  ],
+//  sandbox: [
+//    'allow-same-origin',
+//    'allow-forms',
+//    'allow-scripts'
+//  ],
+//  reportUri: '/report-violation',
+//  reportOnly: true,     // set to true if you *only* want to report errors
+//  setAllHeaders: false,  // set to true if you want to set all headers
+//  disableAndroid: false, // set to true if you want to disable Android (browsers can vary and be buggy)
+//  safari5: false         // set to true if you want to force buggy CSP in Safari 5
+//}));
 
 // Keep user, csrf token and config available
 app.use(function (req, res, next) {

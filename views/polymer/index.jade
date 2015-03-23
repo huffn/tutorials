@@ -33,9 +33,16 @@ block content
         p And then you can use it on your page:
         prettify-element &lt;google-map latitude="40.323" longitude="-111.682"></google-map>
         p Now Polymer can recognize your custom tag and it will look like this on your page (I added a marker as well to point out an important building):
-        google-map(latitude="40.323502", longitude="-111.682517", zoom="17" zoomable="false", draggable="false", disableDefaultUI="true")
+        google-map(latitude="40.323502", longitude="-111.682517", zoom="17", zoomable="false", draggable="false", disableDefaultUI="true")
           google-map-marker(latitude="40.323502", longitude="-111.682517", title="Building S")
-
+            span Building S!!!
+        br
+        p The actual code for this demo:
+        prettify-element(text="&lt;google-map latitude='40.323' longitude='-111.6821' zoom='17' zoomable='false' draggable='false' disableDefaultUI='true'>" +
+        "\n  &lt;google-map-marker latitude='40.323502' longitude='-111.682517' title='Building S'>" +
+        "\n    &lt;span>Building S!!!&lt;/span>" +
+        "\n  &lt;/google-map-marker>" +
+        "\n&lt;/google-map>")
   br
   br
 
